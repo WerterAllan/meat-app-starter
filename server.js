@@ -7,7 +7,7 @@ const expressApp = function() {
   // no diretorio
 
   app.use(express.static(__dirname + '/dist'));
-  app.listen(8080);
+  app.listen(3000);
 }
 
 const jsonServerApp = function () {
@@ -17,7 +17,7 @@ const jsonServerApp = function () {
   const router = jsonServer.router('db.json');
   const middlewares = jsonServer.defaults();
   const fs = require('fs');
-  const port = process.env.PORT || 3000;
+  const port = 8080;
 
   server.use(middlewares);
   server.use(router);
