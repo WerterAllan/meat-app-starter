@@ -15,7 +15,9 @@
   },
   "private": true,
   "dependencies": {
+    "typescript": "2.2.0",
     "@angular/animations": "^4.0.0",
+    "@angular/cli": "1.2.7",
     "@angular/common": "4.0.0",
     "@angular/compiler": "4.0.0",
     "@angular/core": "4.0.0",
