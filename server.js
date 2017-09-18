@@ -6,8 +6,22 @@ const expressApp = function() {
   // rodando a app servindo arquivos estaticos
   // no diretorio
 
+  const forceSSL = function() {
+    return function (req, res, next) {
+      if (req.headers['x-forwarded-proto'] !== 'https') {
+        return res.redirect(
+         ['https://', req.get('Host'), req.url].join('')
+        );
+      }
+      next();
+    }
+  }
+
   app.use(express.static(__dirname + '/dist'));
-  app.listen(3000);
+  //app.use(forceSSL());
+  
+  app.listen(process.env.PORT || 1337);
+  console.log("express rodando na porta:", process.env.PORT || 1337);
 }
 
 const jsonServerApp = function () {
