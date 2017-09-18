@@ -56,7 +56,7 @@ export class OrderComponent implements OnInit {
       number: this.formFbuilder.control('', [Validators.required, Validators.pattern(PATTERNS.number)]),
       optionalAddress: this.formFbuilder.control(''),
       paymentOption: this.formFbuilder.control('', [Validators.required])
-
+      // TODO: Pesquisar como o angular injeta esse propriedade
     }, { validator: OrderComponent.equalsTo });
   }
 
