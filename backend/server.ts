@@ -2,7 +2,7 @@ import * as jsonServer from 'json-server';
 import { Express } from 'express';
 
 import * as fs from 'fs';
-import * as https from 'https';
+import * as https from 'http';
 
 import { handlerAuthentication } from './auth';
 import { handlerAuthorization } from './authz';
@@ -32,7 +32,7 @@ const options = {
   key: fs.readFileSync('./backend/keys/key.pem')
 }
 
-https.createServer(options, server).listen(3001, () => {
+https.createServer(server).listen(3001, () => {
   console.log('JSON Server is running on https://localhost:3001')
 
   });

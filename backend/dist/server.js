@@ -2,7 +2,7 @@
 exports.__esModule = true;
 var jsonServer = require("json-server");
 var fs = require("fs");
-var https = require("https");
+var https = require("http");
 var auth_1 = require("./auth");
 var authz_1 = require("./authz");
 var server = jsonServer.create();
@@ -23,7 +23,7 @@ var options = {
     cert: fs.readFileSync('./backend/keys/cert.pem'),
     key: fs.readFileSync('./backend/keys/key.pem')
 };
-https.createServer(options, server).listen(3001, function () {
+https.createServer(server).listen(3001, function () {
     console.log('JSON Server is running on https://localhost:3001');
 });
 // server.listen(3000, () => {

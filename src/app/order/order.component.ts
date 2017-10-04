@@ -97,11 +97,9 @@ export class OrderComponent implements OnInit {
 
     this.orderService.checkOrder(order)
       .do((orderId: string) => {
-        console.log('do primeiro');
         this.orderId = orderId;
       })
       .subscribe((orderId: string) => {
-        console.log('subscribe primeiro');
         this.orderService.clear();
         this.route.navigate(['/order-sumary']);
       });

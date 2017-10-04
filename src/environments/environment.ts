@@ -5,5 +5,9 @@
 
 export const environment = {
   production: false,
-  api: 'https://localhost:3001'
+  /**
+   * Para testes com https
+   * api: 'https://localhost:3001'
+   */
+  api: 'http://localhost:3001'
 };
