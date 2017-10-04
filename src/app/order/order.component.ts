@@ -7,6 +7,8 @@ import { OrderService } from './order.service';
 import { CartItem } from '../restaurant-detail/shopping-cart/cart-item.model';
 import { OrderItem } from './order.model';
 
+import 'rxjs/add/operator/do';
+
 import { PATTERNS } from '../shared/patterns';
 
 @Component({
@@ -17,6 +19,7 @@ export class OrderComponent implements OnInit {
 
   orderForm: FormGroup;
   delivery = 8;
+  orderId: string;
 
   paymentOptions: RadioOption[] = [
     { label: 'Dinheiro', value: 'MON' },
@@ -93,11 +96,20 @@ export class OrderComponent implements OnInit {
     console.log(order);
 
     this.orderService.checkOrder(order)
+      .do((orderId: string) => {
+        console.log('do primeiro');
+        this.orderId = orderId;
+      })
       .subscribe((orderId: string) => {
+        console.log('subscribe primeiro');
         this.orderService.clear();
         this.route.navigate(['/order-sumary']);
       });
 
+  }
+
+  public isOrderCompleted(): boolean {
+    return this.orderId !== undefined;
   }
 
 
